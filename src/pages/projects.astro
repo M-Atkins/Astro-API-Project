@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { Octokit } from "octokit";
+
+
+// Octokit.js
+// https://github.com/octokit/core.js#readme
+const octokit = new Octokit({
+  auth: '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'
+})
+
+const projects = await octokit.request("GET /users/{username}/repos", {
+  username: "m-atkins",
+
+});
+
+
+---
+
+<Layout title="Projects">
+    <!-- Showcased projects - use card components with .md, then get from github api all other projects. -->
+    
+	<main>
+        <div style="margin: 3%">
+        <h1> Github Projects </h1>
+        
+        <!-- Cards here, in a flex -->
+        <div class="container flex" style="justify-content: left; ">
+            {projects.data.map(project =>(
+                <a href={project.html_url}>
+                    <div style="display: flex; padding: 5px;">
+                <ProjectCard>
+
+                    <div style="display: flex; flex-direction: column; padding: 3px; height: 99%;">
+                    
+                        <div style="display: flex; justify-items: center; align-items: center;">
+                        <h3>{project.name}</h3>
+                        <p style="padding: 1%; margin-left: auto; ">{new Date(project.pushed_at).toLocaleDateString()}</p>
+                    </div>
+                    
+                    <div style="background-color: black; height:2px; width:99%"/>
+                    <p>{project.description}</p>                    
+                    
+                
+                    <div style="display: flex; flex-flow:wrap;  margin-top: auto;">
+                    {project.topics.map(topic => (
+                        <p style="border: solid black; background-color: white; border-radius: 10px; display: flex; margin: 0px; margin-right: 5px; padding: 1%;">{topic}</p>
+                    ))}
+                    </div>
+                </div>
+                    </div>
+                </ProjectCard>
+            </a>
+            ))}
+        </div>
+
+    </div>
+
+
+
+
+        <!-- <div class="flexy"> <h1> Projects </h1> </div>
+
+        <div class="grid-container">
+            
+            {posts.data.map(post =>(
+                <ProjectCard>
+                    <div style="display: flex; align-items: center; padding: 1%;">
+                        <h3>{post.name}</h3>
+                        <div style="margin-left: auto; display: flex; align-items: center;">
+                            <a href={post.html_url}>href</a>
+                            <p style="margin-left: auto;">{new Date(post.pushed_at).toLocaleDateString()}</p>
+                            </div>
+                        
+                        </div>
+                <p>{post.description}</p>
+                
+                </ProjectCard>
+            ))}
+        </div> -->
+
+	</main>
+</Layout>
+
+<style>
+    * {
+        
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        
+
+        transition: all .1s ease-in-out
+
+
+    }
+    a:hover {
+          transform: scale(1.1);
+        }
+    
+
+    .flex {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+    .grid-container {
+		margin: 1%;
+		margin-top: 3%;
+        grid-template-columns: 1fr 1fr;
+		display: grid;
+		gap: 5px;
+		background-color: orange;
+		padding: 10px;
+	}
+
+        @media screen and (max-width: 992px) {
+            .grid-container{
+                display: block;
+    }
+    }
+
+</style>

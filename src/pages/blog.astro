@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import Overlay from '../components/Overlay.astro';
+import LayoutBlog from '../layouts/LayoutBlog.astro';
+
+
+// const response = await fetch('http://jsonplaceholder.typicode.com/posts/?_limit=5');
+// const posts = await response.json();
+
+
+
+const posts = await Astro.glob('../posts/*.md');
+
+---
+
+<Layout title="Home">
+    <head>
+        <script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+$(document).on('click', '.jload', function(e){
+    e.preventDefault();
+    $('.loaded_content1').load($(this).attr('href'));
+});
+</script>
+    </head>
+	<main>
+        <div style="margin: 10%;  background-color: burlywood;">
+            <h1> Blog </h1>
+            <div style="display: flex; flex-direction: column; background-color: orange;">
+                {posts.map(post => (
+                    <a href={post.frontmatter.slug}>
+                    <BlogCard>
+                        <div style="display: flex; justify-items: center; align-items: center;">
+                            <h3>{post.frontmatter.title}</h3>
+                            <p style="padding: 1%; margin-left: auto; ">{new Date(post.frontmatter.date).toLocaleDateString()}</p>
+                        </div>
+
+                        <div style="display: flex; justify-items: center; align-items: center;">
+                            <p style="">{post.frontmatter.excerpt}</p>
+                            <div style=" margin-left: auto; display: flex;  ">
+                            {post.frontmatter.tags.map(tag =>(
+                                <p style="background-color: blue; margin-right: 10px; padding: 3px; border-radius: 10%;">{tag}</p>
+                            ))}
+                        </div>
+                        </div>
+
+                    </BlogCard>
+                </a>
+                ))}
+            </div>
+
+        </div>
+        <!-- <div class="flexy"> <h1> Blog </h1> </div>
+        
+        <div class="container">
+            <Overlay><div class="loaded_content1 scrollme"></div></Overlay>
+            {posts.map(post => (
+                <BlogCard title='' body='' href=''>
+                <h3>{post.frontmatter.title}</h3>
+                <p>{post.frontmatter.excerpt}</p>
+                <p>{post.frontmatter.date}</p>
+                <p>{post.frontmatter.tags}</p>
+                <img src={post.frontmatter.image} alt=""> 
+                  <a href={`/${post.frontmatter.slug}`}>BUTTON</a>
+                BELOW WORKS BUT EXPANDS ALL A TAGS IN CARD AS THEY HOLD THE SAME CLASS, NEEDS A KEY? 
+                <a class="jload" onclick="on()" href={`/${post.frontmatter.slug}`} class="loaded_content">hello</a>
+                </BlogCard>
+            ))}
+        </div> -->
+	</main>
+</Layout>
+
+<style>
+    * {
+
+    }
+
+.scrollme {
+    font-size:  20px;
+    background-color: red;
+    height: 900px;
+    overflow: scroll;
+}
+
+
+
+</style>

@@ -1,0 +1,32 @@
+---
+interface Props {
+	title: string;
+	body: string;
+	href: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+<head> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+</head>
+
+<div class="card">
+		<slot />
+</div>
+
+<style>
+
+	.card {
+		border: solid black;
+		background-color: white;
+		margin: 1%;
+		padding: 1%;
+		width:300px;
+		height: 400px;
+		border-radius: 2%;
+	}
+	
+</style>

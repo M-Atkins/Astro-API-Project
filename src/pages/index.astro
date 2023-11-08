@@ -1,0 +1,136 @@
+---
+import type { jsx } from 'astro/jsx-runtime';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Home">
+	<main>
+		<div style='border-radius: 1%; background-color: #ffffff; border: solid black; margin: 10%; margin-top: 5%;' class="mastercard">
+		<div class="grid-container">
+			<div class="grid-item item1">
+				<p class="intro">Hi, I'm Matt</p>
+			</div>
+			<div class="grid-item item2">
+				<p>I'm a passionate developer with a focus on web, full stack development and graphic design, I love to tinker and I'm always eager to learn new things and take on new and interesting projects.</p>
+			</div>
+			<div class="grid-item item3">
+				<img src="https://www.thekennelclub.org.uk/media/3049/caring-for-your-new-puppy.jpg?mode=crop&width=800&height=600&rnd=132137844420000000" alt="">	
+			</div>
+		</div>
+		<div class="grid-container">
+			<div class="grid-item item4">
+				<p>I've been using html and css for a very long time, I also like to use lots of the technologies, I have experience in javascript, flutter, python</p>
+			</div>
+			<div class="grid-item item5">
+				<div class="iconcollection">
+					<!-- figure out how to read directory -->
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+					<img src="src/media/LinkedIn_logo_initials.png.webp" alt=""> 
+				</div>
+			</div>
+		</div>
+		<div style="margin: 5%;border-radius: 1%; border: 5px solid green;">
+		<div class="centerme">
+			<p >This is my most recent project</p>
+
+			<video controls width="50%">
+				<source src="src/media/Len.webm" type="video/webm" />
+			</video>
+			<p>Check out my other projects here...</p>
+			</div>
+
+			<!-- Think about a component email form -->
+	</div>
+		
+	</div>
+	</main>
+</Layout>
+
+<style>
+	* {
+		box-sizing: border-box;
+		font-family: 'DM Serif Display', serif;
+		
+
+	}
+
+	.centerme {
+		display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+		
+	}
+
+	.grid-container {
+		padding: 2%;
+
+  		
+
+		display: grid;
+		gap: 5px;
+		
+		
+	}
+
+
+	.grid-item {
+		
+		
+	}
+	.intro {
+		font-family: 'DM Serif Display', serif;
+		font-size: 4em;
+		margin: 0px;
+        
+	}
+	.item1 {
+		text-align: left;
+  		grid-column: 1 / span 1;
+  		grid-row: 1;
+
+	}
+
+	.item2 {
+		display:flex;
+		align-items: center;
+  		grid-column: 1 ;
+  		grid-row: 2;
+		
+	}
+
+
+	.item3 {
+  		grid-column: 2;
+  		grid-row: 1 / span 2;
+	}
+	.item3 img {
+		height: 100%;
+		width: 100%;
+		object-fit: contain;
+	}
+
+	.item4 {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.item5 {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.iconcollection {
+		margin: 50px;
+	}
+	.iconcollection img {
+		height: 50px;
+		
+	}
+
+</style>

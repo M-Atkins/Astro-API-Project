@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogCard from '../components/BlogCard.astro';
+
+
+export async function getStaticPaths() {
+    const posts = await Astro.glob('../posts/*.md');
+
+    return posts.map(post => ({
+        params: {
+            slug: post.frontmatter.slug
+        },
+        props: {
+            post
+        }
+    }));
+}
+
+const { Content, frontmatter} = Astro.props.post
+---
+
+<Layout title={frontmatter.title}>  
+    <div style="margin: 10%; margin-top: 5%; padding: 2%; border-radius: 10px; background-color: red;" class="container">
+        <!-- <a href='/blog'>BUTTONBACK</a> -->
+        <div style="display: flex; justify-items: center; align-items: center;">
+            <a href="/blog"><h1>{frontmatter.title}</h1></a>
+            <div style="display: flex; margin-left: auto; ">
+                <p style="padding: 1%;" >{new Date(frontmatter.date).toLocaleDateString()}</p>
+            
+        </div>
+        </div>
+        <div style="background-color: white; height:2px; width:100%"/>
+
+        <div style="display: flex;">
+        {frontmatter.tags.map(tag =>( 
+            <p style="margin-right: 10px; padding: 3px; border-radius: 10%;">{tag},</p>
+        ))}
+        </div>
+        
+
+        <Content />
+    </div>
+</Layout>
+
+<style>
+    * {
+        color:white;
+    }
+</style>
