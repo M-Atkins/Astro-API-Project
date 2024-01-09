@@ -20,7 +20,7 @@ const { Content, frontmatter} = Astro.props.post
 ---
 
 <Layout title={frontmatter.title}>  
-    <div style="margin: 10%; margin-top: 5%; padding: 2%; border-radius: 10px; background-color: red;" class="container">
+    <div style="margin: 10%; margin-top: 5%; padding: 2%; border-radius: 10px; background-color: ;" class="container">
         <!-- <a href='/blog'>BUTTONBACK</a> -->
         <div style="display: flex; justify-items: center; align-items: center;">
             <a href="/blog"><h1>{frontmatter.title}</h1></a>
@@ -29,7 +29,7 @@ const { Content, frontmatter} = Astro.props.post
             
         </div>
         </div>
-        <div style="background-color: white; height:2px; width:100%"/>
+        <div style="background-color: black; height:2px; width:100%"/>
 
         <div style="display: flex;">
         {frontmatter.tags.map(tag =>( 
@@ -44,6 +44,9 @@ const { Content, frontmatter} = Astro.props.post
 
 <style>
     * {
-        color:white;
+        color:;
+    }
+    a {
+      text-decoration: none;
     }
 </style>

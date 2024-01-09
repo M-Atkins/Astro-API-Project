@@ -1,14 +1,12 @@
 ---
-title: I got deported by six!
-slug: got-deported-by-six
-excerpt: I got deported by six! I got sued by 6
+title: I got a new car
+slug: got-new-car
+excerpt: I bought a new car
 date: 2023-02-21
 author: [Matt, Atkins]
-tags: ['deported', 'six', 'gangsta']
+tags: ['car', 'morris minor',]
 image: "src/media/LinkedIn_logo_initials.png.webp"
 ---
-
-[I got deported by 6](https://youtu.be/k4RxhR-IDjA)
 
 
 SQuidem omnis impedit quasi qui at dignissimos. Asperiores tempore rem dolor inventore perferendis. Ut et omnis vitae. Ut nihil delectus assumenda iste et ipsa architecto.
