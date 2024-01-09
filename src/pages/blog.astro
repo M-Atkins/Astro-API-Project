@@ -17,12 +17,7 @@ const posts = await Astro.glob('../posts/*.md');
 <Layout title="Home">
     <head>
         <script is:inline src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script>
-$(document).on('click', '.jload', function(e){
-    e.preventDefault();
-    $('.loaded_content1').load($(this).attr('href'));
-});
-</script>
+
     </head>
 	<main>
         <div style="margin: 10%; margin-top: 2%; padding: 10px; background-color: ; ">
